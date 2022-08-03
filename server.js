@@ -36,7 +36,11 @@ const server = new ApolloServer({
   }
 });
 
-server.applyMiddleware({ app, path: "/" });
+async function h() {
+  await server.start();
+  server.applyMiddleware({ app, path: "/" });
+}
+h();
 
 app.listen({ port }, () => {
   console.log(
